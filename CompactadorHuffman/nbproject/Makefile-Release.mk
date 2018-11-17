@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/arvore.o \
 	${OBJECTDIR}/leitorArquivo.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/lista.o \
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/organizadorLista.o
 
 
 # C Compiler Flags
@@ -74,10 +76,20 @@ ${OBJECTDIR}/leitorArquivo.o: leitorArquivo.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/leitorArquivo.o leitorArquivo.c
 
+${OBJECTDIR}/lista.o: lista.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/lista.o lista.c
+
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/organizadorLista.o: organizadorLista.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/organizadorLista.o organizadorLista.c
 
 # Subprojects
 .build-subprojects:

@@ -6,13 +6,16 @@
                    projectFiles="true">
       <itemPath>arvore.h</itemPath>
       <itemPath>leitorArquivo.h</itemPath>
+      <itemPath>lista.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>arvore.c</itemPath>
       <itemPath>leitorArquivo.c</itemPath>
+      <itemPath>lista.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>organizadorLista.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
@@ -48,7 +51,13 @@
       </item>
       <item path="leitorArquivo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="lista.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="lista.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -79,7 +88,13 @@
       </item>
       <item path="leitorArquivo.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="lista.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="lista.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

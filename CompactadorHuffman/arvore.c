@@ -9,68 +9,70 @@
 #include "arvore.h"
 int max(int a, int b);
 
-struct arv {
-    Arv* noD;
-    Arv* noE;
+struct arvore {
+    Arvore* noD;
+    Arvore* noE;
     char conteudo;
     int ocorrencias;
 };
 
-Arv* arv_criavazia() {
+Arvore* arvore_criavazia() {
     return NULL;
 }
 
-Arv* arv_cria(char c, Arv* e, Arv* d) {
-    Arv* nova = (Arv*) malloc(sizeof (Arv));
+Arvore* arvore_cria(char c, int o, Arvore* e, Arvore* d) {
+    Arvore* nova = (Arvore*) malloc(sizeof (Arvore));
     nova -> noE = e;
     nova -> noD = d;
     nova -> conteudo = c;
+    nova -> ocorrencias = o;
+    return nova;
 }
 
-char info(Arv* a) {
-    return a -> conteudo;
+int arvore_vazia(Arvore* a) {
+    return (a == arvore_criavazia());
 }
 
-int arv_vazia(Arv* a) {
-    return (a == arv_criavazia());
-}
-
-Arv* arv_libera(Arv* a) {
-    if (!arv_vazia(a)) {
-        arv_libera(a->noE);
-        arv_libera(a->noD);
+Arvore* arvore_libera(Arvore* a) {
+    if (!arvore_vazia(a)) {
+        arvore_libera(a->noE);
+        arvore_libera(a->noD);
         free(a);
+    }
+    return NULL;
+}
+
+int arvore_pertence(Arvore* a, char c) {
+    if (arvore_vazia(a)) {
+        return 0;
     } else {
-        return NULL;
+        return ((arvore_getConteudo(a) == c) || arvore_pertence(a->noE, c) || arvore_pertence(a->noD, c));
     }
 }
 
-int arv_pertence(Arv* a, char c) {
-    if (arv_vazia(a)) {
-        return 0;
-    } else {
-        return ((info(a) == c) || arv_pertence(a->noE, c) || arv_pertence(a->noD, c));
+void arvore_imprime(Arvore* a) {
+    printf("<%c\n", arvore_getConteudo(a));
+    if (!arvore_vazia(a)) {        
+        arvore_imprime(a->noE);
+        arvore_imprime(a->noD);
     }
+    printf(">");
 }
 
-//void arv_imprime(Arv* a) {
-//    printf("%c\n", info(a));
-//}
-
-int folhas(Arv* a) {
-    if (arv_vazia(a)) {
+int folhas(Arvore* a) {
+    if (arvore_vazia(a)) {
         return 0;
-    } else if (arv_vazia(a->noE) && (arv_vazia(a->noD))) {
+    } else if (arvore_vazia(a->noE) && (arvore_vazia(a->noD))) {
         return 1;
     } else {
         return folhas(a->noE) + folhas(a->noD);
     }
 }
 
-int ocorrencias(Arv* a, char c) {
-    if (arv_vazia(a)) {
+int ocorrencias(Arvore* a, char c) {
+    if (arvore_vazia(a)) {
         return 0;
-    } else if (info(a) == c) {
+    } else if (arvore_getConteudo(a) == c) {
         ocorrencias(a->noE, c) +ocorrencias(a->noD, c);
         return 1;
     } else {
@@ -78,25 +80,33 @@ int ocorrencias(Arv* a, char c) {
     }
 }
 
-int altura(Arv* a) {
-    if (arv_vazia(a)) {
+int altura(Arvore* a) {
+    if (arvore_vazia(a)) {
         return -1;
     } else {
         return 1 + max(altura(a->noE), altura(a->noD));
     }
 }
 
-Arv* arv_pai(Arv* a, char c) {
-    if (info(a->noD) == c || info(a->noE) == c) {
+Arvore* arvore_pai(Arvore* a, char c) {
+    if (arvore_getConteudo(a->noD) == c || arvore_getConteudo(a->noE) == c) {
         return a;
-    } else if (arv_vazia(a)) {
+    } else if (arvore_vazia(a)) {
         return NULL;
     } else {
-        arv_pai(a->noE, c);
-        arv_pai(a->noD, c);
+        arvore_pai(a->noE, c);
+        arvore_pai(a->noD, c);
     }
 }
 
 int max(int a, int b) {
     return (a > b) ? a : b;
+}
+
+char arvore_getConteudo(Arvore* a) {
+    return a -> conteudo;
+}
+
+int arvore_getOcorrencias(Arvore* a) {
+    return a -> ocorrencias;
 }

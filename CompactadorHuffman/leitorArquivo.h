@@ -14,13 +14,16 @@
 #ifndef LEITORARQUIVO_H
 #define LEITORARQUIVO_H
 
+#include "arvore.h"
+#include "lista.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void inicializaVetor();
-int contagemArquivo(char* arquivo);
-
+    void inicializaVetor(int* c);
+    ListaArvores* contagemArquivo(char* arquivo);
+    ListaArvores* adicionarArvoresArquivo(int* c);
 
 #ifdef __cplusplus
 }
