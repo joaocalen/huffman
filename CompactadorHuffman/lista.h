@@ -35,7 +35,7 @@ extern "C" {
      */
     ListaArvores* lista_inicializa();
 
-    /*Insere um aluno na primeira posi��o da lista de alunos
+    /*Insere um aluno na ultima posi��o da lista de alunos (para facilitar manipulação quanto a montagem da arvore de huffman)
      * inputs: aluno a ser inserido na lista (do tipo TipoItem) e a lista
      * output: nenhum
      * pre-condicao: aluno e lista n�o s�o nulos
@@ -67,6 +67,12 @@ extern "C" {
      * pos-condicao: mem�ria alocada � liberada
      */
     ListaArvores* lista_libera(ListaArvores* lista);
+    
+    Arvore* lista_retiraMenor(ListaArvores* lista);
+    
+    ListaArvores* lista_setTamanho(ListaArvores* lista, int tam);
+    
+    int lista_getTamanho(ListaArvores* lista);
 
 
 #ifdef __cplusplus

@@ -7,6 +7,7 @@
       <itemPath>arvore.h</itemPath>
       <itemPath>leitorArquivo.h</itemPath>
       <itemPath>lista.h</itemPath>
+      <itemPath>organizadorLista.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -59,6 +60,8 @@
       </item>
       <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="organizadorLista.h" ex="false" tool="3" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -95,6 +98,8 @@
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="organizadorLista.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

@@ -41,11 +41,13 @@ ListaArvores* lista_inicializa() {
 void lista_insere(Arvore* arvore, ListaArvores* lista) {
     Arvore_celula* arvoreCel = (Arvore_celula*) malloc(sizeof (Arvore_celula));
     arvoreCel -> arvore = arvore;
-    arvoreCel -> prox = lista -> prim;
-    lista -> prim = arvoreCel;
-    if (lista -> ult == NULL) {
-        lista -> ult = arvoreCel;
+    if (lista -> prim == NULL) {
+        lista -> prim = arvoreCel;
+    } else {
+        lista -> ult -> prox = arvoreCel;
     }
+    lista -> ult = arvoreCel;
+    arvoreCel -> prox = NULL;
 }
 
 Arvore* lista_retira(ListaArvores* lista, char conteudo) {
@@ -61,6 +63,8 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
         free(lista -> prim);
         lista -> prim = NULL;
         lista -> ult = NULL;
+        (lista -> tam)--;
+        printf("TAMANHO: %d",lista -> tam);
         return retorno;
     }
     aux = lista -> prim;
@@ -71,6 +75,7 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
     if (aux != NULL) {
         ant -> prox = aux -> prox;
         retorno = aux -> arvore;
+        (lista -> tam)--;
         free(aux);
     }
     return retorno;
@@ -109,6 +114,22 @@ ListaArvores* lista_setTamanho(ListaArvores* lista, int tam) {
     lista -> tam = tam;
     return lista;
 }
+
+Arvore* lista_retiraMenor(ListaArvores* lista) {
+    Arvore* menor = lista -> prim -> arvore;
+    Arvore_celula* aux = lista -> prim;
+    while (menor != NULL) {
+        if (arvore_getOcorrencias(menor) > arvore_getOcorrencias(aux->arvore)) {
+            menor = aux -> arvore;
+        }
+        aux = aux -> prox;
+    }
+    return lista_retira(lista, arvore_getConteudo(menor));
+}
+
+//Arvore* lista_getArvore(Arvore_celula* arvorecel){
+//    return arvorecel -> arvore;
+//}
 
 //int lista_pertence(ListaArvores* lista, char c) {
 //    
