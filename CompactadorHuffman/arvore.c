@@ -52,7 +52,7 @@ int arvore_pertence(Arvore* a, char c) {
 
 void arvore_imprime(Arvore* a) {
     printf("<%c\n", arvore_getConteudo(a));
-    if (!arvore_vazia(a)) {        
+    if (!arvore_vazia(a)) {
         arvore_imprime(a->noE);
         arvore_imprime(a->noD);
     }
@@ -104,9 +104,13 @@ int max(int a, int b) {
 }
 
 char arvore_getConteudo(Arvore* a) {
-    return a -> conteudo;
+    if (!arvore_vazia(a))
+        return a -> conteudo;
+    return NULL;
 }
 
 int arvore_getOcorrencias(Arvore* a) {
-    return a -> ocorrencias;
+    if (!arvore_vazia(a))
+        return a -> ocorrencias;
+    return 0;
 }

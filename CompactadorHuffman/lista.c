@@ -35,6 +35,7 @@ ListaArvores* lista_inicializa() {
     lista = (ListaArvores*) malloc(sizeof (ListaArvores));
     lista -> prim = NULL;
     lista -> ult = NULL;
+    lista -> tam = 0;
     return lista;
 }
 
@@ -48,6 +49,7 @@ void lista_insere(Arvore* arvore, ListaArvores* lista) {
     }
     lista -> ult = arvoreCel;
     arvoreCel -> prox = NULL;
+    lista -> tam++;
 }
 
 Arvore* lista_retira(ListaArvores* lista, char conteudo) {
@@ -58,13 +60,12 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
     Arvore* retorno = NULL;
     if (lista -> ult == NULL) {
         return NULL;
-    } else if ((lista -> prim == lista -> ult) && arvore_getConteudo(lista ->prim -> arvore) == conteudo) {
+    } else if ((lista -> prim == lista -> ult) && (arvore_getConteudo(lista ->prim -> arvore) == conteudo)) {
         retorno = lista -> prim -> arvore;
         free(lista -> prim);
         lista -> prim = NULL;
         lista -> ult = NULL;
-        (lista -> tam)--;
-        printf("TAMANHO: %d",lista -> tam);
+        lista -> tam = 0;
         return retorno;
     }
     aux = lista -> prim;
@@ -73,10 +74,19 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
         aux = aux -> prox;
     }
     if (aux != NULL) {
-        ant -> prox = aux -> prox;
-        retorno = aux -> arvore;
-        (lista -> tam)--;
-        free(aux);
+        if (aux == lista -> prim) {
+            lista -> prim = lista -> prim -> prox;
+            retorno = aux -> arvore;
+            free(aux);
+        } else {
+            if (aux == lista -> ult){
+                lista -> ult = ant;
+            }
+            ant -> prox = aux -> prox;
+            retorno = aux -> arvore;
+            lista -> tam--;
+            free(aux);
+        }
     }
     return retorno;
 }
@@ -107,7 +117,10 @@ void lista_imprime(ListaArvores* lista) {
 }
 
 int lista_getTamanho(ListaArvores* lista) {
-    return lista -> tam;
+    if (lista != NULL) {
+        return lista -> tam;
+    }
+    return 0;
 }
 
 ListaArvores* lista_setTamanho(ListaArvores* lista, int tam) {
@@ -116,14 +129,18 @@ ListaArvores* lista_setTamanho(ListaArvores* lista, int tam) {
 }
 
 Arvore* lista_retiraMenor(ListaArvores* lista) {
+    // setando valores iniciais:    
     Arvore* menor = lista -> prim -> arvore;
     Arvore_celula* aux = lista -> prim;
-    while (menor != NULL) {
+
+    // varrendo toda lista para procurar menor elemento
+    while (aux != NULL) {
         if (arvore_getOcorrencias(menor) > arvore_getOcorrencias(aux->arvore)) {
             menor = aux -> arvore;
         }
         aux = aux -> prox;
     }
+    // remover da lista a arvore com menor ocorrencia
     return lista_retira(lista, arvore_getConteudo(menor));
 }
 

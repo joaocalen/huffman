@@ -45,7 +45,11 @@ ListaArvores* contagemArquivo(char* arquivo) {
 
     ListaArvores* listaArvores = adicionarArvoresArquivo(caracteres);
 
-    lista_imprime(listaArvores);
+    //lista_imprime(listaArvores);
+    
+    fclose(entrada);
+    
+    return listaArvores;
 
 }
 

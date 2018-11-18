@@ -15,12 +15,13 @@
 #include <stdlib.h>
 
 #include "leitorArquivo.h"
+#include "organizadorLista.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    contagemArquivo(argv[argc - 1]);
+    organizador(contagemArquivo(argv[argc - 1]));
     return (EXIT_SUCCESS);
 }
 

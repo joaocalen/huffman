@@ -7,6 +7,7 @@
 ListaArvores* organizador(ListaArvores* lista) {
     lista = organizaListaOrdemCrescente(lista);
     lista_imprime(lista);
+    lista_libera(lista);
 }
 
 // caso a tenha mais ocorrências que b, o número retornado será positivo (indica que a > b), caso seja menor, retorna negativo (indica que a < b), caso seja 0, pouco importa a ordem, já que são iguais.
@@ -20,8 +21,9 @@ ListaArvores* organizaListaOrdemCrescente(ListaArvores* lista) {
     // enquanto houver elementos na primeira lista:
     ListaArvores* novaLista = lista_inicializa();
     while (lista_getTamanho(lista) > 0) {
-        lista_insere(retiraMenor(lista), novaLista);
+        lista_insere(retiraMenor(lista), novaLista);        
     }
+    lista_libera(lista);
     return novaLista;
 }
 
