@@ -79,7 +79,7 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
             retorno = aux -> arvore;
             free(aux);
         } else {
-            if (aux == lista -> ult){
+            if (aux == lista -> ult) {
                 lista -> ult = ant;
             }
             ant -> prox = aux -> prox;
@@ -92,15 +92,17 @@ Arvore* lista_retira(ListaArvores* lista, char conteudo) {
 }
 
 ListaArvores* lista_libera(ListaArvores* lista) {
-    Arvore_celula* p = lista -> prim;
-    Arvore_celula* aux;
-    while (p != NULL) {
-        aux = p->prox;
-        free(p->arvore);
-        free(p);
-        p = aux;
+    if (lista != NULL) {
+        Arvore_celula* p = lista -> prim;
+        Arvore_celula* aux;
+        while (p != NULL) {
+            aux = p->prox;
+            arvore_libera(p -> arvore);
+            free(p);
+            p = aux;
+        }
+        free(lista);
     }
-    free(lista);
     return NULL;
 }
 
@@ -142,6 +144,12 @@ Arvore* lista_retiraMenor(ListaArvores* lista) {
     }
     // remover da lista a arvore com menor ocorrencia
     return lista_retira(lista, arvore_getConteudo(menor));
+}
+
+// retira primeiro elemento da lista (sem necessidade de busca)
+
+Arvore* lista_retiraPrimeiro(ListaArvores* lista) {
+    return lista_retira(lista, arvore_getConteudo(lista -> prim -> arvore));
 }
 
 //Arvore* lista_getArvore(Arvore_celula* arvorecel){

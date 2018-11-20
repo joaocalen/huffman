@@ -28,6 +28,8 @@ extern "C" {
     ListaArvores* organizaListaOrdemCrescente(ListaArvores* lista);
 
     Arvore* retiraMenor(ListaArvores* lista);
+    
+    Arvore* montaArvoreHuffman(ListaArvores* lista);
 
 
 #ifdef __cplusplus

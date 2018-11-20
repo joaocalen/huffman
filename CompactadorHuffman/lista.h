@@ -73,6 +73,8 @@ extern "C" {
     ListaArvores* lista_setTamanho(ListaArvores* lista, int tam);
     
     int lista_getTamanho(ListaArvores* lista);
+    
+    Arvore* lista_retiraPrimeiro(ListaArvores* lista);
 
 
 #ifdef __cplusplus

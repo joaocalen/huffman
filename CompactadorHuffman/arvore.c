@@ -51,7 +51,7 @@ int arvore_pertence(Arvore* a, char c) {
 }
 
 void arvore_imprime(Arvore* a) {
-    printf("<%c\n", arvore_getConteudo(a));
+    printf("<%c%d", arvore_getConteudo(a),arvore_getOcorrencias(a));
     if (!arvore_vazia(a)) {
         arvore_imprime(a->noE);
         arvore_imprime(a->noD);
@@ -103,10 +103,11 @@ int max(int a, int b) {
     return (a > b) ? a : b;
 }
 
+// (char) 0 equivale a NULL na tabela ASCII
 char arvore_getConteudo(Arvore* a) {
     if (!arvore_vazia(a))
         return a -> conteudo;
-    return NULL;
+    return (char) 0;
 }
 
 int arvore_getOcorrencias(Arvore* a) {
