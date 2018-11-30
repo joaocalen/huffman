@@ -64,12 +64,11 @@ void inicializaVetor(int* c) {
 
 ListaArvores* adicionarArvoresArquivo(int* c) {
     //printf("Caracter %c: %i vezes \n", (char) i, caracteres[i]);
-    ListaArvores* lista = lista_inicializa();
-    lista = lista_setTamanho(lista, 0);
+    ListaArvores* lista = lista_inicializa();    
     int i = 0;
     while (i < n) {
         if (c[i] > 0) {
-            lista_insere(arvore_cria((char) i, c[i], NULL, NULL), lista);
+            lista_insere(arvore_cria((char) i, c[i], arvore_criavazia(), arvore_criavazia()), lista);
             lista = lista_setTamanho(lista, lista_getTamanho(lista) + 1);
         }
         i++;
