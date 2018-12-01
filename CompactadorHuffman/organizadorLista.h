@@ -21,7 +21,7 @@
 extern "C" {
 #endif
 
-    ListaArvores* organizador(ListaArvores* lista);
+    Arvore* organizador(ListaArvores* lista);
 
     int compara(Arvore* a, Arvore* b);
 

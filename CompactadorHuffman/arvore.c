@@ -51,7 +51,7 @@ int arvore_pertence(Arvore* a, char c) {
 }
 
 void arvore_imprime(Arvore* a) {
-    printf("<%c%d", arvore_getConteudo(a),arvore_getOcorrencias(a));
+    printf("<%c%d", arvore_getConteudo(a), arvore_getOcorrencias(a));
     if (!arvore_vazia(a)) {
         arvore_imprime(a->noE);
         arvore_imprime(a->noD);
@@ -104,6 +104,7 @@ int max(int a, int b) {
 }
 
 // (char) 0 equivale a NULL na tabela ASCII
+
 char arvore_getConteudo(Arvore* a) {
     if (!arvore_vazia(a))
         return a -> conteudo;
@@ -114,4 +115,16 @@ int arvore_getOcorrencias(Arvore* a) {
     if (!arvore_vazia(a))
         return a -> ocorrencias;
     return 0;
+}
+
+int arvore_isFolha(Arvore* a) {
+    return a != arvore_criavazia() && a->noD == arvore_criavazia() && a->noE == arvore_criavazia();
+}
+
+Arvore* arvore_getNoE(Arvore* a) {
+    return a->noE;
+}
+
+Arvore* arvore_getNoD(Arvore* a) {
+    return a->noD;
 }

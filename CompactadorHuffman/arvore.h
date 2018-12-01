@@ -56,6 +56,13 @@ extern "C" {
     int arvore_altura(Arvore* a);
 
     int arvore_getOcorrencias(Arvore* a);
+    
+    // retorna 1 se a árvore for nó folha, 0 se não.
+    int arvore_isFolha(Arvore* a);
+    
+    Arvore* arvore_getNoE(Arvore* a);
+    
+    Arvore* arvore_getNoD(Arvore* a);
 
 
 #ifdef __cplusplus

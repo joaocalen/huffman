@@ -36,6 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/arvore.o \
+	${OBJECTDIR}/bitmap.o \
+	${OBJECTDIR}/codificador.o \
 	${OBJECTDIR}/leitorArquivo.o \
 	${OBJECTDIR}/lista.o \
 	${OBJECTDIR}/main.o \
@@ -70,6 +72,16 @@ ${OBJECTDIR}/arvore.o: arvore.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/arvore.o arvore.c
+
+${OBJECTDIR}/bitmap.o: bitmap.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/bitmap.o bitmap.c
+
+${OBJECTDIR}/codificador.o: codificador.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/codificador.o codificador.c
 
 ${OBJECTDIR}/leitorArquivo.o: leitorArquivo.c
 	${MKDIR} -p ${OBJECTDIR}
