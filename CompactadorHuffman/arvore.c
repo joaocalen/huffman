@@ -12,7 +12,7 @@ int max(int a, int b);
 struct arvore {
     Arvore* noD;
     Arvore* noE;
-    char conteudo;
+    unsigned char conteudo;
     int ocorrencias;
 };
 
@@ -20,7 +20,7 @@ Arvore* arvore_criavazia() {
     return NULL;
 }
 
-Arvore* arvore_cria(char c, int o, Arvore* e, Arvore* d) {
+Arvore* arvore_cria(unsigned char c, int o, Arvore* e, Arvore* d) {
     Arvore* nova = (Arvore*) malloc(sizeof (Arvore));
     nova -> noE = e;
     nova -> noD = d;
@@ -42,7 +42,7 @@ Arvore* arvore_libera(Arvore* a) {
     return NULL;
 }
 
-int arvore_pertence(Arvore* a, char c) {
+int arvore_pertence(Arvore* a, unsigned char c) {
     if (arvore_vazia(a)) {
         return 0;
     } else {
@@ -69,7 +69,7 @@ int folhas(Arvore* a) {
     }
 }
 
-int ocorrencias(Arvore* a, char c) {
+int ocorrencias(Arvore* a, unsigned char c) {
     if (arvore_vazia(a)) {
         return 0;
     } else if (arvore_getConteudo(a) == c) {
@@ -88,7 +88,7 @@ int altura(Arvore* a) {
     }
 }
 
-Arvore* arvore_pai(Arvore* a, char c) {
+Arvore* arvore_pai(Arvore* a, unsigned char c) {
     if (arvore_getConteudo(a->noD) == c || arvore_getConteudo(a->noE) == c) {
         return a;
     } else if (arvore_vazia(a)) {
@@ -105,10 +105,10 @@ int max(int a, int b) {
 
 // (char) 0 equivale a NULL na tabela ASCII
 
-char arvore_getConteudo(Arvore* a) {
+unsigned char arvore_getConteudo(Arvore* a) {
     if (!arvore_vazia(a))
         return a -> conteudo;
-    return (char) 0;
+    return (unsigned char) 0;
 }
 
 int arvore_getOcorrencias(Arvore* a) {

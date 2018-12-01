@@ -16,12 +16,16 @@
 
 #include "leitorArquivo.h"
 #include "organizadorLista.h"
+#include "codificador.h"
+#include "arvore.h"
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    organizador(contagemArquivo(argv[argc - 1]));
+    Arvore* huffman = organizador(contagemArquivo(argv[argc - 1]));
+    criaSequencias(huffman);
+    arvore_libera(huffman);
     return (EXIT_SUCCESS);
 }
 

@@ -49,7 +49,7 @@ extern "C" {
      * pre-condicao: lista n�o � nula
      * pos-condicao: lista n�o cont�m o aluno de matr�cula mat
      */
-    Arvore* lista_retira(ListaArvores* lista, char conteudo);
+    Arvore* lista_retira(ListaArvores* lista, unsigned char conteudo);
 
 
     /*Imprime os dados de todos os alunos da lista

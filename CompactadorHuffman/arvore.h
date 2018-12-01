@@ -25,7 +25,7 @@ extern "C" {
 
     //cria uma �rvore com a informa��o do n� raiz c, e
     //com sub�rvore esquerda e e sub�rvore direita d
-    Arvore* arvore_cria(char c, int o, Arvore* e, Arvore* d);
+    Arvore* arvore_cria(unsigned char c, int o, Arvore* e, Arvore* d);
 
     //libera o espa�o de mem�ria ocupado pela �rvore a
     Arvore* arvore_libera(Arvore* a);
@@ -35,22 +35,22 @@ extern "C" {
     int arvore_vazia(Arvore* a);
 
     //indica a ocorr�ncia (1) ou n�o (0) do caracter c
-    int arvore_pertence(Arvore* a, char c);
+    int arvore_pertence(Arvore* a, unsigned char c);
 
     //imprime as informa��es dos n�s da �rvore
     void arvore_imprime(Arvore* a);
 
     //retorna o pai de um dado no
-    Arvore* arvore_pai(Arvore* a, char c);
+    Arvore* arvore_pai(Arvore* a, unsigned char c);
 
     //retorna a quantidade de folhas de uma arvore binaria
     int arvore_folhas(Arvore* a);
 
     //retorna o numero de ocorrencias de um dado caracter na arvore 
-    int arvore_ocorrencias(Arvore* a, char c);
+    int arvore_ocorrencias(Arvore* a, unsigned char c);
 
     //retorna o campo informacao de um dado no
-    char arvore_getConteudo(Arvore* a);
+    unsigned char arvore_getConteudo(Arvore* a);
 
     //retorna a altura da arvore
     int arvore_altura(Arvore* a);

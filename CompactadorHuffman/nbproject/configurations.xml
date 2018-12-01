@@ -5,8 +5,9 @@
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
       <itemPath>arvore.h</itemPath>
-      <itemPath>bitmap.h</itemPath>
+      <itemPath>bin.h</itemPath>
       <itemPath>codificador.h</itemPath>
+      <itemPath>escreveArquivoCompactado.h</itemPath>
       <itemPath>leitorArquivo.h</itemPath>
       <itemPath>lista.h</itemPath>
       <itemPath>organizadorLista.h</itemPath>
@@ -15,11 +16,12 @@
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>arvore.c</itemPath>
-      <itemPath>bitmap.c</itemPath>
+      <itemPath>bin.c</itemPath>
       <itemPath>codificador.c</itemPath>
+      <itemPath>compactador.c</itemPath>
+      <itemPath>escreveArquivoCompactado.c</itemPath>
       <itemPath>leitorArquivo.c</itemPath>
       <itemPath>lista.c</itemPath>
-      <itemPath>main.c</itemPath>
       <itemPath>organizadorLista.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -47,18 +49,29 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="arvore.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="arvore.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bitmap.c" ex="false" tool="0" flavor2="0">
+      <item path="bin.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="bitmap.h" ex="false" tool="3" flavor2="0">
+      <item path="bin.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="codificador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="compactador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoCompactado.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoCompactado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="leitorArquivo.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -67,8 +80,6 @@
       <item path="lista.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="lista.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -99,13 +110,19 @@
       </item>
       <item path="arvore.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="bitmap.c" ex="false" tool="0" flavor2="0">
+      <item path="bin.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="bitmap.h" ex="false" tool="3" flavor2="0">
+      <item path="bin.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="codificador.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="compactador.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoCompactado.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoCompactado.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="leitorArquivo.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -114,8 +131,6 @@
       <item path="lista.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="lista.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="organizadorLista.c" ex="false" tool="0" flavor2="0">
       </item>

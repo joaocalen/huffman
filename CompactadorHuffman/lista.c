@@ -52,7 +52,7 @@ void lista_insere(Arvore* arvore, ListaArvores* lista) {
     lista -> tam++;
 }
 
-Arvore* lista_retira(ListaArvores* lista, char conteudo) {
+Arvore* lista_retira(ListaArvores* lista, unsigned char conteudo) {
     //Arvore_celula* arvoreCel = (Arvore_celula*) malloc(sizeof (Arvore_celula));
     //arvoreCel -> arvore -> conteudo = conteudo;
     Arvore_celula* aux;

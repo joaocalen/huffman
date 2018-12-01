@@ -5,29 +5,25 @@
  */
 
 /* 
- * File:   codificador.h
+ * File:   bin.h
  * Author: joaogcalen
  *
- * Created on 30 de Novembro de 2018, 23:13
+ * Created on 1 de Dezembro de 2018, 11:47
  */
 
-#ifndef CODIFICADOR_H
-#define CODIFICADOR_H
-
-#include "arvore.h"
+#ifndef BIN_H
+#define BIN_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void percorreArvore(Arvore* huffman, int sequencia, unsigned char* sequencias[]);
-
-unsigned char* criaSequencias(Arvore* huffman);
+unsigned char bin_to_dec(unsigned char* binario);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* CODIFICADOR_H */
+#endif /* BIN_H */
 

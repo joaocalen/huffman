@@ -5,8 +5,10 @@
 // Arquivo com o objetivo de receber a lista de árvores inicial, organizá-la e retornar a árvore de huffman montada
 
 Arvore* organizador(ListaArvores* lista) {
-    lista = organizaListaOrdemCrescente(lista);        
-    return montaArvoreHuffman(lista);
+    lista = organizaListaOrdemCrescente(lista);
+    Arvore* huffman = montaArvoreHuffman(lista);
+    arvore_imprime(huffman);
+    return huffman;
 }
 
 // caso a tenha mais ocorrências que b, o número retornado será positivo (indica que a > b), caso seja menor, retorna negativo (indica que a < b), caso seja 0, pouco importa a ordem, já que são iguais.
@@ -38,7 +40,7 @@ Arvore* montaArvoreHuffman(ListaArvores* lista) {
     while (lista_getTamanho(lista) > 1) {
         arv1 = lista_retiraPrimeiro(lista);
         arv2 = lista_retiraPrimeiro(lista);
-        lista_insere(arvore_cria((char) 0, arvore_getOcorrencias(arv1) + arvore_getOcorrencias(arv2), arv1, arv2),lista);
+        lista_insere(arvore_cria((unsigned char) 0, arvore_getOcorrencias(arv1) + arvore_getOcorrencias(arv2), arv1, arv2),lista);
         lista = organizaListaOrdemCrescente(lista);
     }
     arv1 = lista_retiraPrimeiro(lista);
