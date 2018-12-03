@@ -25,6 +25,7 @@
  */
 //int main(int argc, char** argv) {
 //    Arvore* huffman = organizador(contagemArquivo(argv[argc - 1]));
+//    arvore_imprime(huffman);
 //    unsigned char** tabela = criaSequencias(huffman);
 //    montaArquivo(argv[argc - 1], tabela, huffman);
 //    arvore_libera(huffman);

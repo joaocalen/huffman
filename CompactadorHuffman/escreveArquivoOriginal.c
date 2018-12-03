@@ -10,7 +10,7 @@
 void montaArquivoOriginal(char* nome, unsigned char** tabela) {
     FILE* compactado = fopen(nome, "r");
     char* novoNome = retiraExtensaoComp(nome);
-    FILE* original = fopen(strcat(novoNome, ".txt"), "w");
+    FILE* original = fopen(novoNome, "w");
     char binario[8] = {'0'};
     memset(binario, 0, 9);
     int numBits = 0;
@@ -19,20 +19,21 @@ void montaArquivoOriginal(char* nome, unsigned char** tabela) {
     int numCaracteres = 0;
     fscanf(compactado, "%d", &numCaracteres);
     fgetc(compactado); //andando uma posição no arquivo, para chegar na árvore compactada impressa
-    int aux = 0, caracter = 0;
+    int aux = 0, caracterInt = 0;
+    unsigned char caracter = 0;
     andaPonteiro(compactado, numBits);
     char* conteudoArquivo = (char*) malloc(numCaracteres * 8 * sizeof (char));
-    memset(conteudoArquivo, 0, 9);
+    memset(conteudoArquivo, 0, numCaracteres * 8);
     conteudoArquivo = converteConteudo(compactado, conteudoArquivo);
     int i = 0, j = 0;
     printf("%d\n\n", numCaracteres);
     while (aux < numCaracteres) {
-        // printf("%d %d %d \n", i, j, aux);
+        printf("%d %d %d \n", i, j, aux);
         binario[j] = conteudoArquivo[i];
-        caracter = caracterReferente(binario, tabela);
+        caracterInt = caracterReferente(binario, tabela);
         j++;
-        if (caracter > 0) {
-            fputc(caracter, original);
+        if (caracterInt > 0) {
+            fputc((unsigned char) caracterInt, original);
             memset(binario, 0, 9);
             j = 0;
             aux++;
@@ -81,8 +82,8 @@ void andaPonteiro(FILE* compactado, int numBits) {
 }
 
 char* converteConteudo(FILE* compactado, char* conteudo) {
-    int c = fgetc(compactado);
-    while (c > 0) {
+    unsigned char c = fgetc(compactado);
+    while (!feof(compactado)) {
         //conteudo = realloc(conteudo, strlen(conteudo) + 8 * sizeof (char));
         char* bin = dec_to_bin(c);
         conteudo = strcat(conteudo, bin);

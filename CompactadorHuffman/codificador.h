@@ -20,12 +20,16 @@
 extern "C" {
 #endif
 
+    // Função recursiva que através da árvore de huffman, insere os valores binários de huffman referente à cada caracter. Esses valores são inseridos em um vetor de 256 posições
     void percorreArvore(Arvore* huffman, int sequencia, unsigned char** sequencias);
-
+    
+    // função principal do arquivo, chama as outras funçoes auxiliares e retorna a tabela de sequencias binárias definidas em percorreArvore
     unsigned char** criaSequencias(Arvore* huffman);
 
+    // libera (free) em todas as posições da tabela
     void tabela_libera(unsigned char** tabela);
 
+    // faz alocação dinâmica das posições da tabela
     void tabela_aloca(unsigned char** tabela);
 
 #ifdef __cplusplus

@@ -18,9 +18,11 @@
 extern "C" {
 #endif
 
+    // Dado um número em binário, retorna o caracter referente ao número decimal após a conversão
     unsigned char bin_to_dec(unsigned char* binario);
 
-    char* dec_to_bin(int decimal);
+    // dado um número decimal, retorna uma cadeia de caracter que é justamente o número em binário
+    char* dec_to_bin(unsigned char decimal);
 #ifdef __cplusplus
 }
 #endif

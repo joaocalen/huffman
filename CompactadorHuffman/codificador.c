@@ -21,10 +21,10 @@ void percorreArvore(Arvore* huffman, int sequencia, unsigned char** sequencias) 
         percorreArvore(arvore_getNoD(huffman), sequencia, sequencias);
         sequencia = (int) ((sequencia - 1) / 10);
     } else if (arvore_isFolha(huffman)) {
-        snprintf(sequencias[(int) arvore_getConteudo(huffman)], 9, "%d", sequencia);
+        snprintf(sequencias[(unsigned int) arvore_getConteudo(huffman)], 9, "%d", sequencia);
         int i = 0;
-        while (sequencias[(int) arvore_getConteudo(huffman)][i] == '1' || sequencias[(int) arvore_getConteudo(huffman)][i] == '0') {
-            sequencias[(int) arvore_getConteudo(huffman)][i] = sequencias[(int) arvore_getConteudo(huffman)][i + 1];
+        while (sequencias[(unsigned int) arvore_getConteudo(huffman)][i] == '1' || sequencias[(unsigned int) arvore_getConteudo(huffman)][i] == '0') {
+            sequencias[(unsigned int) arvore_getConteudo(huffman)][i] = sequencias[(unsigned int) arvore_getConteudo(huffman)][i + 1];
             i++;
         }
     }

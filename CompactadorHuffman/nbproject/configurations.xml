@@ -6,7 +6,6 @@
                    projectFiles="true">
       <itemPath>arvore.h</itemPath>
       <itemPath>bin.h</itemPath>
-      <itemPath>cabecalho.h</itemPath>
       <itemPath>codificador.h</itemPath>
       <itemPath>escreveArquivoCompactado.h</itemPath>
       <itemPath>escreveArquivoOriginal.h</itemPath>
@@ -67,8 +66,6 @@
       </item>
       <item path="bin.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="cabecalho.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="codificador.h" ex="false" tool="3" flavor2="0">
@@ -125,8 +122,6 @@
       <item path="bin.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="bin.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="cabecalho.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>

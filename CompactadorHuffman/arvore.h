@@ -55,23 +55,31 @@ extern "C" {
     //retorna a altura da arvore
     int arvore_altura(Arvore* a);
 
+    // retorna o número de ocorrências do caracter daquele nó
     int arvore_getOcorrencias(Arvore* a);
 
     // retorna 1 se a árvore for nó folha, 0 se não.
     int arvore_isFolha(Arvore* a);
 
+    // retorna o nó filho à esquerda da árvore
     Arvore* arvore_getNoE(Arvore* a);
 
+    // retorna o nó filho à direita da árvore
     Arvore* arvore_getNoD(Arvore* a);
 
+    // retorna o número de nós da árvore
     int arvore_qntdNos(Arvore* a);
 
+    // Dada uma árvore a e uma árvore b, retorna a com b de nó filho à esquerda
     Arvore* arvore_setNoE(Arvore* a, Arvore* b);
 
+    // Dada uma árvore a e uma árvore b, retorna a com b de nó filho à direita
     Arvore* arvore_setNoD(Arvore* a, Arvore* b);
 
+    // Dada uma árvore a um inteiro x, retorna a como tendo x ocorrências
     Arvore* arvore_setOcorrencias(Arvore* a, int ocorrencias);
 
+    // Dada uma árvore a um caracter c, retorna a como tendo c de conteúdo
     Arvore* arvore_setConteudo(Arvore* a, unsigned char conteudo);
 
 #ifdef __cplusplus

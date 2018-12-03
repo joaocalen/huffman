@@ -21,14 +21,16 @@
 extern "C" {
 #endif
 
+    // Dada uma lista de nós folhas (árvores), organiza tal lista para retornar uma árvore de huffman completa
     Arvore* organizador(ListaArvores* lista);
 
-    int compara(Arvore* a, Arvore* b);
-
+    // Dada uma lista de árvores, retorna a própria lista reorganizada em ordem crescente de ocorrência
     ListaArvores* organizaListaOrdemCrescente(ListaArvores* lista);
 
+    // retira a árvore com o menor número de ocorrências da lista
     Arvore* retiraMenor(ListaArvores* lista);
     
+    // monta a árvore de huffman a partir de vários nós folhas apresentados na lista de árvores.
     Arvore* montaArvoreHuffman(ListaArvores* lista);
 
 

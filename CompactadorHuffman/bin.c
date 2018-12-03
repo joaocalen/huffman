@@ -17,7 +17,7 @@ unsigned char bin_to_dec(unsigned char* binario) {
     return (unsigned char) dec;
 }
 
-char* dec_to_bin(int decimal) {
+char* dec_to_bin(unsigned char decimal) {
     char* binario = (char*) malloc(9 * sizeof (char));
     memset(binario,0,9);
     //printf("%d",decimal);

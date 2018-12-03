@@ -9,8 +9,8 @@ void montaArquivo(char* nome, unsigned char** tabela, Arvore* huffman) {
     FILE* compactado;
     FILE* original;
     original = fopen(nome, "r");
-    char* novoNome = retiraExtensao(nome);
-    compactado = fopen(strcat(novoNome, ".comp"), "w");
+    //char* novoNome = retiraExtensao(nome);
+    compactado = fopen(strcat(nome, ".comp"), "w");
     fprintf(compactado, "%d", (arvore_folhas(huffman) * 8 + arvore_qntdNos(huffman))); // quantidade de bits escritos pelo cabeçalho
     fputc('.', compactado); // separa a informação de parada do cabeçalho com a da leitura de caracteres
     fprintf(compactado, "%d", arvore_getOcorrencias(huffman)); // quantidade de caracteres que serão lidos pelo descompacta
@@ -50,7 +50,7 @@ void escreveCabecalho(FILE* arquivo, Arvore* huffman, unsigned char* escrita, in
             escrita[*i] = '1';
 
             *i = *i + 1;
-            char* letra = dec_to_bin(arvore_getConteudo(huffman));
+            unsigned char* letra = dec_to_bin(arvore_getConteudo(huffman));
 
             int j = 0;
             while (j != 8) {
@@ -80,10 +80,10 @@ void escreveCabecalho(FILE* arquivo, Arvore* huffman, unsigned char* escrita, in
 
 void escreveArquivo(FILE* original, FILE* compactado, unsigned char** tabela) {
     unsigned char escrita[8] = {'2', '2', '2', '2', '2', '2', '2', '2'}; //valores iniciais, todos serão modificados.
-    int aux = fgetc(original);
+    unsigned char aux = fgetc(original);
     int i = 0;
     int j = 0;
-    while (aux > 0) {
+    while (!feof(original)) {
         //printf("%s", c);
         while (tabela[aux][j] != '\0') {
             if (i == 8) {

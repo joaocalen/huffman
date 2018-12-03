@@ -17,7 +17,7 @@
 #include "arvore.h"
 #include "lista.h"
 #include "bin.h"
-#define n 255
+#define n 256
 
 ListaArvores* contagemArquivo(char* arquivo) {
 
@@ -25,6 +25,10 @@ ListaArvores* contagemArquivo(char* arquivo) {
 
     FILE *entrada;
     entrada = fopen(arquivo, "r");
+    if (entrada == NULL) {
+        printf("arquivo não encontrado. Abortando");
+        exit(1);
+    }
 
     // inicializando o vetor com a contagem das ocorrências de cada caracter. n = 255 pois há 256 caracteres na tabela ASCII.
 
@@ -35,10 +39,10 @@ ListaArvores* contagemArquivo(char* arquivo) {
 
     // Leitura do arquivo
 
-    int c = fgetc(entrada);
+    unsigned char c = fgetc(entrada);
 
     // -1 é o inteiro referente a EOF
-    while (c > 0) {
+    while (!feof(entrada)) {
         caracteres[c]++;
         c = fgetc(entrada);
     }
@@ -70,7 +74,7 @@ ListaArvores* adicionarArvoresArquivo(int* c) {
     int i = 0;
     while (i < n) {
         if (c[i] > 0) {
-            lista_insere(arvore_cria((char) i, c[i], arvore_criavazia(), arvore_criavazia()), lista);
+            lista_insere(arvore_cria((unsigned char) i, c[i], arvore_criavazia(), arvore_criavazia()), lista);
             lista = lista_setTamanho(lista, lista_getTamanho(lista) + 1);
         }
         i++;
@@ -81,11 +85,15 @@ ListaArvores* adicionarArvoresArquivo(int* c) {
 Arvore* lerCompactado(char* arquivo) {
     FILE *compactado;
     compactado = fopen(arquivo, "r");
+    if (compactado == NULL) {
+        printf("arquivo não encontrado. Abortando");
+        exit(1);
+    }
     int numBits = lerNumBits(compactado);
     fgetc(compactado); //andando uma posição no arquivo (pular o ponto)
     int numCaracteres = lerNumBits(compactado);
     fgetc(compactado); //andando uma posição no arquivo, para chegar na árvore compactada impressa
-    char* sequencia = lerCabecalho(compactado, numBits);
+    unsigned char* sequencia = lerCabecalho(compactado, numBits);
     int aux = 0; // variavel para posicao no vetor de bits
     Arvore* huffman = sequencia_to_arvore(sequencia, &aux);
     //arvore_imprime(huffman);
@@ -100,13 +108,13 @@ int lerNumBits(FILE* compactado) {
     return c;
 }
 
-char* lerCabecalho(FILE* compactado, int numBits) {
+unsigned char* lerCabecalho(FILE* compactado, int numBits) {
     int i = 0, j = 0, k = 0, numBytes = 0;
     numBytes = (int) numBits / 8;
-    char* sequencia = (char*) malloc(numBits + 1 * sizeof (char));
+    unsigned char* sequencia = (unsigned char*) malloc(numBits + 1 * sizeof (unsigned char));
     memset(sequencia, 0, numBits + 1);
     while (i < numBytes) {
-        char* letra = dec_to_bin(fgetc(compactado));
+        unsigned char* letra = dec_to_bin(fgetc(compactado));
         k = 0;
         while (k != 8) {
             sequencia[j] = letra[k];
@@ -119,7 +127,7 @@ char* lerCabecalho(FILE* compactado, int numBits) {
 
     // pegar os bits refentes à sobra. Ou seja, não pegará todos os bits do último byte, se numBits % 8 != 0
     k = 0;
-    char* letra = dec_to_bin(fgetc(compactado));
+    unsigned char* letra = dec_to_bin(fgetc(compactado));
     while (j < numBits) {
         sequencia[j] = letra[k];
         k++;
@@ -129,7 +137,7 @@ char* lerCabecalho(FILE* compactado, int numBits) {
     return sequencia;
 }
 
-Arvore* sequencia_to_arvore(char* sequencia, int* aux) {
+Arvore* sequencia_to_arvore(unsigned char* sequencia, int* aux) {
     if (sequencia[*aux] == '1') {
         *aux = *aux + 1;
         char caracter[8] = {'0'};
