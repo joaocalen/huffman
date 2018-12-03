@@ -17,7 +17,6 @@ void montaArquivo(char* nome, unsigned char** tabela, Arvore* huffman) {
     fputc('.', compactado); // separa informações de parada do cabeçalho
     unsigned char* escrita = (unsigned char*) malloc(9 * sizeof (unsigned char));
     memset(escrita, 0, 9);
-    printf("\n\n\n");
     int i = 0;
     escreveCabecalho(compactado, huffman, escrita, &i);
     while (i != 8) {
@@ -45,7 +44,6 @@ void escreveCabecalho(FILE* arquivo, Arvore* huffman, unsigned char* escrita, in
         if (arvore_isFolha(huffman)) {
             if (*i == 8) {
                 fputc(("%u", bin_to_dec(escrita)), arquivo);
-                printf("%s ", escrita);
                 *i = 0;
                 memset(escrita, 0, 9);
             }

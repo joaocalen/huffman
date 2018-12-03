@@ -27,7 +27,6 @@ void percorreArvore(Arvore* huffman, int sequencia, unsigned char** sequencias) 
             sequencias[(int) arvore_getConteudo(huffman)][i] = sequencias[(int) arvore_getConteudo(huffman)][i + 1];
             i++;
         }
-        printf("\n%c: %s", arvore_getConteudo(huffman), sequencias[(int) arvore_getConteudo(huffman)]);
     }
 }
 

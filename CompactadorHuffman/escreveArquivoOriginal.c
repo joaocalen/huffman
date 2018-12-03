@@ -3,35 +3,53 @@
 #include <string.h>
 #include <stdlib.h>
 
-void montaArquivo(char* nome, unsigned char** tabela) {
+#include "bin.h"
+#include "codificador.h"
+#include "escreveArquivoOriginal.h"
+
+void montaArquivoOriginal(char* nome, unsigned char** tabela) {
     FILE* compactado = fopen(nome, "r");
-    FILE* original = fopen(strcat(retiraExtensao(nome), ".txt"), "w");
-    char* binario = (char*) malloc(9 * sizeof (char));
+    char* novoNome = retiraExtensaoComp(nome);
+    FILE* original = fopen(strcat(novoNome, ".txt"), "w");
+    char binario[8] = {'0'};
     memset(binario, 0, 9);
-    int c, numBits = 0;
+    int numBits = 0;
     fscanf(compactado, "%d", &numBits);
     fgetc(compactado); //andando uma posição no arquivo (pular o ponto)
     int numCaracteres = 0;
     fscanf(compactado, "%d", &numCaracteres);
     fgetc(compactado); //andando uma posição no arquivo, para chegar na árvore compactada impressa
-    int aux = 0;
+    int aux = 0, caracter = 0;
     andaPonteiro(compactado, numBits);
-    char* conteudoArquivo = converteConteudo(compactado);
-    while (c > 0) {
-        binario = strcat(binario, c);
-        aux = caracterReferente(binario, tabela);
-        if (aux > 0) {
-            fputc(aux, compactado);
+    char* conteudoArquivo = (char*) malloc(numCaracteres * 8 * sizeof (char));
+    memset(conteudoArquivo, 0, 9);
+    conteudoArquivo = converteConteudo(compactado, conteudoArquivo);
+    int i = 0, j = 0;
+    printf("%d\n\n", numCaracteres);
+    while (aux < numCaracteres) {
+        // printf("%d %d %d \n", i, j, aux);
+        binario[j] = conteudoArquivo[i];
+        caracter = caracterReferente(binario, tabela);
+        j++;
+        if (caracter > 0) {
+            fputc(caracter, original);
             memset(binario, 0, 9);
+            j = 0;
+            aux++;
         }
+        i++;
     }
+    fclose(compactado);
+    fclose(original);
+    free(conteudoArquivo);
+    tabela_libera(tabela);
 }
 
 
 // função identica à função de escreveArquivoCompactado.c. A preferência em repetir a função ao invés de usar a do outro arquivo,
 // é justamente a de não precisar dar um include em todo o arquivo em questão
 
-char* retiraExtensao(char* nome) {
+char* retiraExtensaoComp(char* nome) {
     int i = strlen(nome);
     while (nome[i] != '.') {
         i--;
@@ -51,14 +69,25 @@ int caracterReferente(char* binario, unsigned char** tabela) {
     return -1;
 }
 
-char* andaPonteiro(FILE* compactado, int numBits) {
+void andaPonteiro(FILE* compactado, int numBits) {
     int aux = 0;
     while (aux < (int) (numBits / 8)) {
         fgetc(compactado);
         aux++;
     }
+    if (numBits % 8 != 0) {
+        fgetc(compactado);
+    }
 }
 
-char* converteConteudo(FILE* compactado) {
-
+char* converteConteudo(FILE* compactado, char* conteudo) {
+    int c = fgetc(compactado);
+    while (c > 0) {
+        //conteudo = realloc(conteudo, strlen(conteudo) + 8 * sizeof (char));
+        char* bin = dec_to_bin(c);
+        conteudo = strcat(conteudo, bin);
+        free(bin);
+        c = fgetc(compactado);
+    }
+    return conteudo;
 }

@@ -18,8 +18,15 @@
 extern "C" {
 #endif
 
+    void montaArquivoOriginal(char* nome, unsigned char** tabela);
 
+    char* retiraExtensaoComp(char* nome);
 
+    int caracterReferente(char* binario, unsigned char** tabela);
+
+    void andaPonteiro(FILE* compactado, int numBits);
+
+    char* converteConteudo(FILE* compactado, char* conteudo);
 
 #ifdef __cplusplus
 }

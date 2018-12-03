@@ -7,7 +7,6 @@
 Arvore* organizador(ListaArvores* lista) {
     lista = organizaListaOrdemCrescente(lista);
     Arvore* huffman = montaArvoreHuffman(lista);
-    arvore_imprime(huffman);
     return huffman;
 }
 

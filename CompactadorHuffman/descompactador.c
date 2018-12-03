@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include "leitorArquivo.h"
 #include "codificador.h"
+#include "escreveArquivoOriginal.h"
 
 /*
  * 
@@ -22,6 +23,8 @@
 int main(int argc, char** argv) {
     Arvore* huffman = lerCompactado(argv[argc - 1]);
     unsigned char** tabela = criaSequencias(huffman);
+    arvore_libera(huffman);
+    montaArquivoOriginal(argv[argc - 1], tabela);
     return (EXIT_SUCCESS);
 }
 
