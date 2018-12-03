@@ -24,6 +24,11 @@ extern "C" {
     void inicializaVetor(int* c);
     ListaArvores* contagemArquivo(char* arquivo);
     ListaArvores* adicionarArvoresArquivo(int* c);
+    Arvore* lerCompactado(char* arquivo);
+    int lerNumBits(FILE* compactado);
+    int lerNumCaracteres(FILE* compactado);
+    char* lerCabecalho(FILE* compactado, int numBits);
+    Arvore* sequencia_to_arvore(char* sequencia, int* aux);
 
 #ifdef __cplusplus
 }

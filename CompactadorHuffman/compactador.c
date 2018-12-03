@@ -18,14 +18,17 @@
 #include "organizadorLista.h"
 #include "codificador.h"
 #include "arvore.h"
+#include "escreveArquivoCompactado.h"
 
 /*
  * 
  */
-int main(int argc, char** argv) {
-    Arvore* huffman = organizador(contagemArquivo(argv[argc - 1]));
-    criaSequencias(huffman);
-    arvore_libera(huffman);
-    return (EXIT_SUCCESS);
-}
+//int main(int argc, char** argv) {
+//    Arvore* huffman = organizador(contagemArquivo(argv[argc - 1]));
+//    unsigned char** tabela = criaSequencias(huffman);
+//    montaArquivo(argv[argc - 1], tabela, huffman);
+//    arvore_libera(huffman);
+//    tabela_libera(tabela);
+//    return (EXIT_SUCCESS);
+//}
 

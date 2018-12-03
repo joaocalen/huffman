@@ -14,15 +14,19 @@
 #ifndef ESCREVEARQUIVOCOMPACTADO_H
 #define ESCREVEARQUIVOCOMPACTADO_H
 
+#include "arvore.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    void montaArquivo(char* nome, unsigned char* tabela[]);
+    void montaArquivo(char* nome, unsigned char** tabela, Arvore* huffman);
     
     char* retiraExtensao(char* nome);
     
-    void escreveCabecalho(FILE* arquivo, unsigned char* tabela[]);
+    void escreveCabecalho(FILE* arquivo, Arvore* huffman, unsigned char* escrita, int* i);
+    
+    void escreveArquivo(FILE* original, FILE* compactado, unsigned char** tabela);
 
 
 

@@ -59,13 +59,13 @@ void arvore_imprime(Arvore* a) {
     printf(">");
 }
 
-int folhas(Arvore* a) {
+int arvore_folhas(Arvore* a) {
     if (arvore_vazia(a)) {
         return 0;
     } else if (arvore_vazia(a->noE) && (arvore_vazia(a->noD))) {
         return 1;
     } else {
-        return folhas(a->noE) + folhas(a->noD);
+        return arvore_folhas(a->noE) + arvore_folhas(a->noD);
     }
 }
 
@@ -127,4 +127,37 @@ Arvore* arvore_getNoE(Arvore* a) {
 
 Arvore* arvore_getNoD(Arvore* a) {
     return a->noD;
+}
+
+Arvore* arvore_setNoE(Arvore* a, Arvore* b) {
+    if (!arvore_vazia(a))
+        a->noE = b;
+    return a;
+}
+
+Arvore* arvore_setNoD(Arvore* a, Arvore* b) {
+    if (!arvore_vazia(a))
+        a->noD = b;
+    return a;
+}
+
+Arvore* arvore_setOcorrencias(Arvore* a, int ocorrencias) {
+    if (!arvore_vazia(a))
+        a->ocorrencias = ocorrencias;
+    return a;
+}
+
+Arvore* arvore_setConteudo(Arvore* a, unsigned char conteudo) {
+    if (!arvore_vazia(a)) {
+        a->conteudo = conteudo;
+    }
+    return a;
+}
+
+int arvore_qntdNos(Arvore* a) {
+    if (a != NULL) {
+        return arvore_qntdNos(a->noE) + arvore_qntdNos(a->noD) + 1;
+    } else {
+        return 0;
+    }
 }

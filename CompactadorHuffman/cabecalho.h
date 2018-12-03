@@ -5,25 +5,25 @@
  */
 
 /* 
- * File:   bin.h
+ * File:   cabecalho.h
  * Author: joaogcalen
  *
- * Created on 1 de Dezembro de 2018, 11:47
+ * Created on 1 de Dezembro de 2018, 15:22
  */
 
-#ifndef BIN_H
-#define BIN_H
+#ifndef CABECALHO_H
+#define CABECALHO_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-    unsigned char bin_to_dec(unsigned char* binario);
+    typedef struct cabecalho Cabecalho;
 
-    char* dec_to_bin(int decimal);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* BIN_H */
+#endif /* CABECALHO_H */
 

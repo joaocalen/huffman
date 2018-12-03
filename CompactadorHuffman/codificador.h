@@ -20,10 +20,13 @@
 extern "C" {
 #endif
 
-void percorreArvore(Arvore* huffman, int sequencia, unsigned char* sequencias[]);
+    void percorreArvore(Arvore* huffman, int sequencia, unsigned char** sequencias);
 
-unsigned char* criaSequencias(Arvore* huffman);
+    unsigned char** criaSequencias(Arvore* huffman);
 
+    void tabela_libera(unsigned char** tabela);
+
+    void tabela_aloca(unsigned char** tabela);
 
 #ifdef __cplusplus
 }

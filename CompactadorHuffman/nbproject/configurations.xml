@@ -6,8 +6,10 @@
                    projectFiles="true">
       <itemPath>arvore.h</itemPath>
       <itemPath>bin.h</itemPath>
+      <itemPath>cabecalho.h</itemPath>
       <itemPath>codificador.h</itemPath>
       <itemPath>escreveArquivoCompactado.h</itemPath>
+      <itemPath>escreveArquivoOriginal.h</itemPath>
       <itemPath>leitorArquivo.h</itemPath>
       <itemPath>lista.h</itemPath>
       <itemPath>organizadorLista.h</itemPath>
@@ -19,7 +21,9 @@
       <itemPath>bin.c</itemPath>
       <itemPath>codificador.c</itemPath>
       <itemPath>compactador.c</itemPath>
+      <itemPath>descompactador.c</itemPath>
       <itemPath>escreveArquivoCompactado.c</itemPath>
+      <itemPath>escreveArquivoOriginal.c</itemPath>
       <itemPath>leitorArquivo.c</itemPath>
       <itemPath>lista.c</itemPath>
       <itemPath>organizadorLista.c</itemPath>
@@ -63,15 +67,23 @@
       </item>
       <item path="bin.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="cabecalho.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="codificador.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="compactador.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="descompactador.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="escreveArquivoCompactado.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="escreveArquivoCompactado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="escreveArquivoOriginal.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoOriginal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="leitorArquivo.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -114,15 +126,23 @@
       </item>
       <item path="bin.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="cabecalho.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="codificador.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="codificador.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="compactador.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="descompactador.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="escreveArquivoCompactado.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="escreveArquivoCompactado.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="escreveArquivoOriginal.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="escreveArquivoOriginal.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="leitorArquivo.c" ex="false" tool="0" flavor2="0">
       </item>

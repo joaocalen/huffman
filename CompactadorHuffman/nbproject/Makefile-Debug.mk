@@ -39,7 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/bin.o \
 	${OBJECTDIR}/codificador.o \
 	${OBJECTDIR}/compactador.o \
+	${OBJECTDIR}/descompactador.o \
 	${OBJECTDIR}/escreveArquivoCompactado.o \
+	${OBJECTDIR}/escreveArquivoOriginal.o \
 	${OBJECTDIR}/leitorArquivo.o \
 	${OBJECTDIR}/lista.o \
 	${OBJECTDIR}/organizadorLista.o
@@ -89,10 +91,20 @@ ${OBJECTDIR}/compactador.o: compactador.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/compactador.o compactador.c
 
+${OBJECTDIR}/descompactador.o: descompactador.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/descompactador.o descompactador.c
+
 ${OBJECTDIR}/escreveArquivoCompactado.o: escreveArquivoCompactado.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/escreveArquivoCompactado.o escreveArquivoCompactado.c
+
+${OBJECTDIR}/escreveArquivoOriginal.o: escreveArquivoOriginal.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/escreveArquivoOriginal.o escreveArquivoOriginal.c
 
 ${OBJECTDIR}/leitorArquivo.o: leitorArquivo.c
 	${MKDIR} -p ${OBJECTDIR}
